@@ -1,0 +1,94 @@
+package com.app.identity;
+
+import java.util.Hashtable;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import javax.naming.directory.SearchResult;
+ 
+public class LDAP {
+ 
+	public static void main(String[] args) {
+ 
+		//Adresse du serveur sur lequel se trouve l'annuaire LDAP
+		String serverIP = "10.49.52.8";
+		//Pourt du serveur sur lequel se trouve l'annuaire LDAP
+		String serverPort = "389";
+		//Login de connexion à l'annuaire LDAP : Le login dois être sous forme de "distinguished name"
+		//ce qui signifie qu'il dois être affiché sous la forme de son arborescence LDAP
+		String serverLogin = "CN=gu_pic_uma,OU=Users,OU=FR-Paris,DC=puma,DC=lan";
+		//Mot de passe de connexion à l'annuaire LDAP
+		String serverPass = "wnx8cCL0YAz05YurJxU1";
+ 
+		//On remplis un tableau avec les parametres d'environement et de connexion au LDAP
+		Hashtable environnement = new Hashtable();
+		environnement.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+		environnement.put(Context.PROVIDER_URL, "ldap://"+serverIP+":"+serverPort+"/");
+		environnement.put(Context.SECURITY_AUTHENTICATION, "simple");
+		environnement.put(Context.SECURITY_PRINCIPAL, serverLogin);
+		environnement.put(Context.SECURITY_CREDENTIALS, serverPass);
+		try {
+			//On appelle le contexte à partir de l'environnement
+			DirContext contexte = new InitialDirContext(environnement);
+			//Si ça ne plante pas c'est que la connexion est faite
+			System.out.println("Connexion au serveur : SUCCES");
+			try {
+				//On recupere l'attribut de DUPONT JEAN
+				//Attributes attrs = contexte.getAttributes("CN=ALECHCHEIKH Tahar,OU=Users,OU=FR-Paris,DC=puma,DC=lan");
+				Attributes attrs = contexte.getAttributes("CN=ALECHCHEIKH\\, Tahar,OU=Users,OU=MA-Casablanca,DC=puma,DC=lan");
+				System.out.println("Recuperation de dupont : SUCCES");
+				//On affiche le nom complet de dupont
+				System.out.println(attrs.get("name"));
+				//On affiche le mail de dupont
+				System.out.println(attrs.get("mail"));
+				//On affiche le service de dupont
+				System.out.println(attrs.get("password"));
+				/*
+			    //Filtre du LDAP
+				NamingEnumeration<SearchResult> userAnswer = contexte.search("OU=Users,OU=MA-Casablanca,DC=puma,DC=lan", null);
+	 
+				//Parcourir tous les Utilisateurs
+				while (userAnswer.hasMoreElements()) {
+					SearchResult sr = (SearchResult) userAnswer.next();
+					Attributes attrs = sr.getAttributes();
+	 
+					if (attrs != null) {
+						try {
+							//Récupération des attributs
+							for (NamingEnumeration ae = attrs.getAll(); ae.hasMore();) {
+								Attribute attr = (Attribute) ae.next();
+								if (attr.getID().equals("sn")) {
+									System.out.println(attr.get(0).toString());
+								}
+								if (attr.getID().equals("displayName")) {
+									System.out.println(attr.get(0).toString());
+								}
+							}
+						} catch (NamingException e) {
+							System.err.println("Défaut : " + e);
+							e.printStackTrace();
+						}
+					}
+				}
+				contexte.close();
+			}
+			catch (NamingException e) {
+				System.err.println("Problème de connexion");
+				e.printStackTrace();
+			}
+		}
+ */
+		} catch (NamingException e) {
+				System.out.println("Recuperation de User : ECHEC");
+				e.printStackTrace();
+			}
+		} catch (NamingException e) {
+			System.out.println("Connexion au serveur : ECHEC");
+			e.printStackTrace();
+		}
+	}
+}
