@@ -1,0 +1,16 @@
+<div class="s-login-pg">
+    <div class="s-login-pg-head">
+        <div style="width:100px;"><s-logo></s-logo></div>
+        <h4 style="text-align: center"> Outil CSP </h4>
+        <h5 style="text-align: center"> (Comité Suivi Projets) </h5>
+    </div>
+    <form class="s-login-pg-form" name="form" (ngSubmit)="login()" #f="ngForm" novalidate>
+        <input type="text"     placeholder="Username" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+        <button type="submit" class="btn btn-primary">LOG IN</button>
+    </form>
+    <div class="s-login-pg-foot">
+        <div *ngIf="errMsg" style="color:indianred; font-weight: bold">{{errMsg}}</div>
+    </div>
+
+</div>
