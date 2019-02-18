@@ -1,0 +1,4 @@
+<label for="slides">Thème : </label>
+<select name="slides" [(ngModel)]="selectedSlide" (change)="onChangeSlides()">
+  <option *ngFor="let slide of listeSlides" [ngValue]="slide">{{slide.theme.name}}</option>
+</select>

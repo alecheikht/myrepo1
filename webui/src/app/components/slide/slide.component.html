@@ -1,0 +1,16 @@
+<div class="card" style="overflow-y:auto;overflow-x:hidden;height:420px;" >
+<span *ngIf="slide">
+    <div class="row">
+      <div class="col-md-2">
+            <app-images [InputConfigImages]="slide.configSlide.configImages" (selectedImageEvent)="modifyImage($event)"></app-images>
+      </div>
+      <div class="col-md-6">
+        <app-image [image]="selectedImage"></app-image>
+      </div>
+      <div class="col-md-4">
+          <app-comment [comment]="slide.comment[0]"></app-comment>
+      </div>
+    </div>
+</span>
+<!--{{getJsonSlide()}}-->
+</div>

@@ -1,0 +1,5 @@
+
+  <label for="poles">Pôle : </label>
+  <select name="poles" [(ngModel)]="selectedPole" (change)="onChangePoles()">
+    <option *ngFor="let pole of listePoles" [ngValue]="pole">{{pole.name}}</option>
+  </select>

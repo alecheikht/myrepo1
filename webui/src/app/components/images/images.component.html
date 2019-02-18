@@ -1,0 +1,17 @@
+<!--div class="card-body">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let image of configImages" (click)="onClick(image)">  
+          <img src="http://localhost:4200/assets/images/ImagesQlikView/{{image.nom}}" width="95%" height="95%" >
+        </li> 
+    </ul> 
+    
+</div-->
+    <div class="s-list-pg">
+        <div class="s-list-item-pg" *ngFor="let image of configImages" (click)="onClick(image)">  
+          <img src="http://localhost:4200/assets/images/ImagesQlikView/{{image.nom}}" width="95%" height="95%" style="opacity: 0.75" >
+        </div> 
+    </div>    
+   
+
+
+

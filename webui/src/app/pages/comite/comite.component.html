@@ -1,0 +1,42 @@
+<!--span *ngIf="selectedConfigDomaine">{{selectedConfigDomaine.name}} ></span--> 
+<!--span *ngIf="selectedConfigPole">{{selectedConfigPole.name}} </span-->
+<div class="row">
+    <div class="col-md-10">
+        <span *ngIf="selectedConfigSlide"><app-themes [selectedConfigDomaine]="selectedConfigDomaine" [selectedConfigPole]="selectedConfigPole" [InputTheme]="selectedConfigSlide.theme"></app-themes></span>
+    </div>
+    <div class="col-md-2">
+        <span *ngIf="comite"><mat-slide-toggle color="warn" [checked]="comite.encours" (change)="StateComiteChange()">{{(comite.encours===true)?'En cours':'Clôturé'}}</mat-slide-toggle></span>
+    </div>
+</div>
+
+<div class="s-body-pg">
+<div class="row">
+    <div class="col-md-2">
+        <app-listedomaines [InputListeDomaines]="listeConfigDomaines" [InputSelectedDomaine]="selectedConfigDomaine" (selectedDomaine)="modifyDomaine($event)" ></app-listedomaines>
+    </div>
+    <div class="col-md-2">
+        <app-listesemaines [InputListeSemaines]="listeSemaines" [InputSelectedSemaine]="selectedSemaine" (selectedSemaine)="modifySemaine($event)" ></app-listesemaines>
+    </div>
+
+    <div class="col-md-4">
+        <app-listepoles [InputListePoles]="listeConfigPoles" [InputSelectedPole]="selectedConfigPole" (selectedPole)="modifyPole($event)" ></app-listepoles>
+    </div>
+    <div class="col-md-4">
+        <app-listeslides [InputListeSlides]="listeConfigSlides" [InputSelectedSlide]="selectedConfigSlide" (selectedSlide)="modifySlide($event)" ></app-listeslides>
+    </div>
+</div>
+<!--span *ngIf="comite"><input type="checkbox" name="encours" [checked]="comite.encours"/></span-->
+
+<app-slide [InputSlide]="selectedSlide"></app-slide>
+<div style="display:flex;" >
+<app-pagination style="margin-left: auto;margin-right: auto;  margin-top: 7px;"   
+    [page]="page"
+    (pageChange)="modifyPage($event)"
+    [pageSize]="1"
+    [collectionSize]="listeConfigSlides.length"></app-pagination>
+</div>
+</div>
+<!------------------------->
+
+
+

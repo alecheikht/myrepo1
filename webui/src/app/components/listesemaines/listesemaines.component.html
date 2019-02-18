@@ -1,0 +1,4 @@
+<label for="semaines">Semaine : </label>
+<select name="semaines"  [(ngModel)]="selectedSemaine" (change)="onChangeSemaines()">
+  <option *ngFor="let semaine of listeSemaines" [ngValue]="semaine" [selected]="semaine.encours==true" >{{semaine.semaine}}</option>
+</select>

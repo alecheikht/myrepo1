@@ -1,0 +1,5 @@
+
+  <label for="domaines">Domaine : </label>
+  <select name="domaines" [(ngModel)]="selectedDomaine" (change)="onChangeDomaines()">
+    <option *ngFor="let domaine of listeDomaines" [ngValue]="domaine">{{domaine.name}}</option>
+  </select>

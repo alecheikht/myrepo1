@@ -24,8 +24,8 @@ export class HomeComponent   {
     public showAppAlert:boolean = false;
     public appHeaderItems=[
         {
-            label   : 'Dashboard',
-            href    : '/home/dashboard',
+            label   : 'Comité',
+            href    : '/home/comite',
             subNav  : []
         }
     ];

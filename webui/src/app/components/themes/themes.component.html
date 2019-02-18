@@ -1,0 +1,6 @@
+<span class="path1">
+<!--span  *ngFor="let theme of themes"><app-theme [data]="theme"></app-theme></span-->
+<a *ngIf="selectedConfigDomaine" class="current1" ><span class="badge1 badge1-inverse"></span>{{selectedConfigDomaine.name}}</a> 
+<a *ngIf="selectedConfigPole" class="current2" ><span class="badge1 badge1-inverse"></span>{{selectedConfigPole.name}}</a> 
+<a *ngFor="let theme of themes"><span class="badge1"></span> {{theme.name}}</a> 
+</span>

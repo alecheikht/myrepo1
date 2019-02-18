@@ -1,0 +1,67 @@
+.path1 a {
+    padding: 5px 6px 5px;
+    margin-right: 4px;
+    background: #efefef;
+    position: relative;
+    display: inline-block;
+}
+.path1 a:before {
+    width: 0;
+    height: 0;
+    border-top: 15px inset transparent;
+    border-bottom: 15px inset transparent;
+    border-left: 15px solid #fff;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+}
+.path1 a:after {
+    width: 0;
+    height: 0;
+    border-top: 15px inset transparent;
+    border-bottom: 15px inset transparent;
+    border-left: 15px solid #efefef;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -15px;
+    z-index: 2;
+}
+.path1 a:first-child:before,
+.path1 a:last-child:after {
+    border: none;
+}
+.path1 a:first-child {
+    -webkit-border-radius: 4px 0 0 4px;
+       -moz-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+}
+.path1 a:last-child {
+    -webkit-border-radius: 0 4px 4px 0;
+       -moz-border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
+}
+.path1 .badge1 {
+    margin: 0 5px 0 18px;
+    position: relative;
+    top: -1px;
+}
+.path1 a:first-child .badge1 {
+    margin-left: 0;
+}
+.path1 .current1 {
+    background: #007ACC;
+    color: #fff;
+}
+.path1 .current1:after {
+    border-left-color: #007ACC;
+}
+
+.path1 .current2 {
+    background: rgb(159, 217, 219);
+    color: #fff;
+}
+.path1 .current2:after {
+    border-left-color: rgb(159, 217, 219);;
+}
