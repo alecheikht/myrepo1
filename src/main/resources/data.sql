@@ -87,6 +87,7 @@ insert into config_present_slide (configpresent_id, configslide_id,order_slide) 
 (2, 10, 1),
 (2, 11, 2),
 (2, 12, 3),
+(2, 13, 4),
 
 (5, 14, 0),
 (5, 15, 1),

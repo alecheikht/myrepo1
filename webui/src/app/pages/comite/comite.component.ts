@@ -207,7 +207,7 @@ export class ComiteComponent implements OnInit, OnChanges {
    // modalRef.componentInstance.name = 'World';
    // const modalRef = this.modalService.open(NgbdModalContent);
     //modalRef.componentInstance.name = 'World';
-    this.modalService.openDialog(this.viewRef, {
+   /* this.modalService.openDialog(this.viewRef, {
       title: 'Some modal title',
       childComponent: SimpleModalComponent,
         settings: {
@@ -217,7 +217,18 @@ export class ComiteComponent implements OnInit, OnChanges {
         text: 'Some text content'
         }
 
-      });
+      });*/
+      if(this.comite.encours===true){
+        var params ={ semaine: this.selectedSemaine.semaine, organisationId: this.selectedConfigDomaine.id };
+
+        this.comiteService.CreateNextComite(params).subscribe(data =>{
+          ////this.comite=data;
+          this.initListeSemaines(this.selectedConfigDomaine);
+          //this.initListeDomaines();
+          this.modifySemaine(this.selectedSemaine);
+
+        });
+      }
       
 
   }

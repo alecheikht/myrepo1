@@ -58,4 +58,9 @@ export class ComiteService {
         return this.apiRequest.get('slide?comiteId=' + comiteId + '&configSlideId=' + configSlideId);
 
     }
+
+    CreateNextComite(params) {
+        return this.apiRequest.post('createnextcomite', params);
+   
+    }
 }
